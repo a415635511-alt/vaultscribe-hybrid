@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VaultScribe Hybrid — Privacy-First Firebase AI Logic Analyst</title>
+  <link rel="stylesheet" href="./src/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div>
+        <h1>VaultScribe <span class="accent">Hybrid</span></h1>
+        <p class="subtitle">On-Device Gemini Nano + PII-Scrubbed Cloud Gemini via <strong>Firebase AI Logic</strong></p>
+      </div>
+      <div class="badges">
+        <span id="chromeAiBadge" class="pill pill-muted">Checking Chrome On-Device AI…</span>
+        <span id="routeBadge" class="pill pill-blue">Mode: PREFER_ON_DEVICE</span>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section class="panel">
+        <div class="panel-head">
+          <h2>1. Confidential Document Input</h2>
+          <button id="loadSampleBtn" class="btn btn-ghost">Load Sample EU Freelance Contract</button>
+        </div>
+        <textarea id="docInput" rows="12" placeholder="Paste any NDA, lease, invoice, tax notice, or medical bill here…"></textarea>
+
+        <div class="controls">
+          <label class="toggle">
+            <input type="checkbox" id="privacyLock" />
+            <span><strong>Strict Privacy Lock</strong> (<code>ONLY_ON_DEVICE</code> — zero bytes leave device)</span>
+          </label>
+          <label class="toggle">
+            <input type="checkbox" id="deepAudit" />
+            <span><strong>Deep Compliance Audit</strong> (PII-scrubbed <code>ONLY_IN_CLOUD</code> structured JSON)</span>
+          </label>
+        </div>
+
+        <details class="cfg-box">
+          <summary>Firebase AI Logic Config (App Check + Remote Config + Firestore)</summary>
+          <div class="cfg-grid">
+            <input id="cfgApiKey" placeholder="apiKey (or VITE_FIREBASE_API_KEY)" />
+            <input id="cfgProjectId" placeholder="projectId (or VITE_FIREBASE_PROJECT_ID)" />
+            <input id="cfgAppId" placeholder="appId (or VITE_FIREBASE_APP_ID)" />
+            <input id="cfgDebugToken" placeholder="App Check Debug Token (optional)" />
+          </div>
+        </details>
+
+        <div class="actions">
+          <button id="scrubBtn" class="btn btn-secondary">Preview Local PII Redaction (Offline)</button>
+          <button id="analyzeBtn" class="btn btn-primary">Run Hybrid AI Analysis</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>2. Hybrid Telemetry &amp; Risk Report</h2>
+          <span id="latencyLabel" class="muted">Idle</span>
+        </div>
+
+        <div id="piiBanner" class="banner hidden"></div>
+        <div id="scrubPreviewBox" class="codebox hidden"></div>
+        <div id="reportOutput" class="report">
+          <p class="muted">Click <strong>Preview Local PII Redaction</strong> (works 100% offline with zero keys) or configure Firebase AI Logic and click <strong>Run Hybrid AI Analysis</strong>.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
