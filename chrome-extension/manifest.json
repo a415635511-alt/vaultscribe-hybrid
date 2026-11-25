@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "VaultScribe Hybrid \u2014 Firebase AI Logic Side Panel",
+  "version": "1.0.0",
+  "description": "Privacy-first PII redaction + hybrid on-device Gemini Nano / cloud Gemini document analyst powered by Firebase AI Logic.",
+  "permissions": [
+    "sidePanel",
+    "activeTab"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "side_panel": {
+    "default_path": "index.html"
+  },
+  "action": {
+    "default_title": "Open VaultScribe Hybrid"
+  }
+}
