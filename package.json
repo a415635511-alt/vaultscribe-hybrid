@@ -1,0 +1,19 @@
+{
+  "name": "vaultscribe-hybrid",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Privacy-first PII-scrubbing document & contract analyst powered by Firebase AI Logic Hybrid Inference (Chrome Gemini Nano on-device + Cloud Gemini fallback)",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "firebase": "^12.0.0"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0"
+  }
+}
